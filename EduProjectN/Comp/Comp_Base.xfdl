@@ -2,7 +2,7 @@
 <FDL version="2.1">
   <Form id="Comp_Base" width="1000" height="700" titletext="Components">
     <Layouts>
-      <Layout height="700" width="1000" stepcount="3">
+      <Layout height="700" width="1000" stepcount="4">
         <Static id="Static33" taborder="75" text="" left="159" top="575" height="100" right="10" border="" background="" padding="" cssclass="sta_WF_DetailArea" positionstep="1"/>
         <Static id="Static34" taborder="76" text="" left="159" top="438" height="170" right="10" border="" background="" padding="" cssclass="sta_WF_DetailArea" positionstep="2"/>
         <PopupMenu id="PopupMenu00" left="266" top="582" width="116" height="86" innerdataset="@gds_menu" captioncolumn="MENU_NAME" idcolumn="MENU_ID" levelcolumn="MENU_LEVEL" iconcolumn="MENU_ICON" hotkeycolumn="MENU_KEY" enablecolumn="MENU_ENABLE" positionstep="1"/>
@@ -43,10 +43,10 @@
         <Static id="Static14" taborder="63" text="" left="159" top="621" height="55" right="10" border="" background="" padding="" cssclass="sta_WF_DetailArea"/>
         <Static id="Static00" taborder="0" text="Components - Base" left="10" top="10" width="250" height="30" cssclass="sta_WF_Subtitle" positionstep="-1"/>
         <Button id="Button00" taborder="4" text="Save" left="170" top="124" width="100" height="30"/>
-        <Edit id="Edit00" taborder="6" left="170" top="183" width="180" height="30" value="nexacro platform"/>
-        <MaskEdit id="MaskEdit00" taborder="8" left="170" top="242" width="134" height="30" value="8307011234567" type="string" textAlign="center" format="######-#######"/>
+        <Edit id="Edit00" taborder="6" left="170" top="183" width="180" height="30" value="nexacro platform" password="true"/>
+        <MaskEdit id="MaskEdit00" taborder="8" left="170" top="242" width="134" height="30" value="8307011234567" type="string" textAlign="center" format="#####-#{######]"/>
         <MaskEdit id="MaskEdit01" taborder="9" left="315" top="242" width="116" height="30" value="12345.88" format="#,###.00"/>
-        <TextArea id="TextArea00" taborder="11" left="170" top="296" width="220" height="80" value="nexacro platform&#10;Hello World&#10;TextArea Component"/>
+        <TextArea id="TextArea00" taborder="11" left="170" top="296" width="220" height="80" value="nexacro platform&#10;Hello World&#10;TextArea Component&#10;&#10;dddd" onchanged="TextArea00_onchanged"/>
         <Static id="Static25" taborder="2" text="nexacro platform" left="170" top="65" width="160" height="30"/>
         <CheckBox id="CheckBox00" taborder="16" text="Check" left="170" top="459" width="180" height="30" value="true"/>
         <Spin id="Spin00" taborder="18" left="170" top="518" width="68" height="30" value="17"/>
@@ -448,6 +448,11 @@ this.btn_popDiv_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var nX = parseInt(obj.width);	
 	var nY = 0;
 	this.PopupDiv00.trackPopupByComponent(obj, nX, nY, 340, 150);	
+};
+
+this.TextArea00_onchanged = function(obj:nexacro.TextArea,e:nexacro.ChangeEventInfo)
+{
+	
 };
 ]]></Script>
   </Form>

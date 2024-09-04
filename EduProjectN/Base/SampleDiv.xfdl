@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="SampleDiv" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="Div00" taborder="0" text="Div00" left="68" top="70" width="327" height="222">
+          <Layouts>
+            <Layout>
+              <TextArea id="TextArea00" taborder="0" left="25" top="28" width="128" height="52"/>
+              <Button id="Button00" taborder="1" text="Button00" left="192" top="24" width="99" height="50"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00_00" taborder="1" text="Div00" left="423" top="70" width="327" height="222" url="Comp::Comp_Grid.xfdl"/>
+        <Tab id="Tab00" taborder="2" tabindex="0" left="68" top="303" width="327" height="182">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="Tabpage1">
+              <Layouts>
+                <Layout>
+                  <Div id="Div00" taborder="0" text="Div00" left="59" top="35" width="135" height="87"/>
+                  <Div id="Div01" taborder="1" text="Div01" left="91" top="27" width="181" height="103"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage2" text="Tabpage2"/>
+          </Tabpages>
+        </Tab>
+        <Tab id="Tab00_00" taborder="3" tabindex="0" left="423" top="310" width="327" height="175">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="Tabpage1" url="Comp::Comp_Radio.xfdl"/>
+            <Tabpage id="Tabpage2" text="Tabpage2"/>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Tab00_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	
+};
+
+this.Tab00_00_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>
