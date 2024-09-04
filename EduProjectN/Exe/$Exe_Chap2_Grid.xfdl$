@@ -2,7 +2,7 @@
 <FDL version="2.1">
   <Form id="Exe_Chap2_Grid" width="1000" height="700" titletext="Exe_Chap2_Grid">
     <Layouts>
-      <Layout height="700" width="1000" stepcount="6" stepindex="5">
+      <Layout height="700" width="1000" stepcount="6" stepindex="3">
         <Static id="Static07" taborder="0" text="Exe 1 - Grid1" left="10" top="40" width="250" height="30" cssclass="sta_WF_TypeTitle"/>
         <Grid id="Grid1" taborder="1" left="10" top="70" height="193" binddataset="Dataset1" width="490" autofittype="col" oncellclick="Grid_oncellclick" onheadclick="Grid1_onheadclick">
           <Formats>
@@ -307,7 +307,7 @@
         <Button id="btn_Exe6_1" taborder="41" text="6_1" left="12" top="474" width="60" height="30" positionstep="4" onclick="btn_Exe6_1_onclick"/>
         <Button id="btn_Exe6_2" taborder="42" text="6_2" left="12" top="514" width="60" height="30" positionstep="4"/>
         <Button id="btn_Exe6_3" taborder="43" text="6_3" left="12" top="554" width="60" height="30" positionstep="4" onclick="btn_Exe6_3_onclick"/>
-        <Grid id="Grid6" taborder="44" left="10" top="70" height="354" binddataset="Dataset6" positionstep="4" right="10" autofittype="col" fastvscrolltype="topdisplay">
+        <Grid id="Grid6" taborder="44" left="10" top="70" height="354" binddataset="Dataset6" positionstep="4" right="10">
           <Formats>
             <Format id="default">
               <Columns>

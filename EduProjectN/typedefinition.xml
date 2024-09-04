@@ -76,6 +76,7 @@
     <Service prefixid="SvsBS" type="bs" version="0" cachelevel="session" include_subdir="false" communicationversion="0" url="http://demo.nexacro.com/edu/nexacroN/" service_list="EduServiceList.jsp" dataset_url="SvsBS.xds" data_schema="EduServiceDetail.jsp?"/>
     <Service prefixid="SvcMETA" type="metadata" version="0" cachelevel="session" include_subdir="false" communicationversion="0" url="http://demo.nexacro.com/edu/nexacroN/" service_list="EduMetaDataList.jsp" dataset_url="SvcMETA.xds" data_schema="EduMetaDataDetail.jsp?"/>
     <Service prefixid="ModelTable" type="model" url="http://demo.nexacro.com/edu/nexacroN/" version="0" cachelevel="session" include_subdir="true" communicationversion="0" service_list="EduModelService_Table.jsp" data_schema="EduModelService_Table.jsp"/>
+    <Service prefixid="Exe2" type="form" url="./Exe2/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>
   <Update>
     <Os name="Windows" url="./" timeout="30" retry="3" autoupdate="auto" updatetype="server">

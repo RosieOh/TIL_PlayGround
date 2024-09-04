@@ -2,7 +2,7 @@
 <FDL version="2.1">
   <Form id="Exe_Chap1_Dataset" width="1000" height="700" titletext="Exe_Chap1_Dataset" onstepchanged="Exe_Chap1_Dataset_onstepchanged" onbeforeclose="Exe_Chap1_Dataset_onbeforeclose">
     <Layouts>
-      <Layout height="700" width="1000" stepcount="3" stepindex="1">
+      <Layout height="700" width="1000" stepcount="3" stepindex="2">
         <Grid id="Grid1" taborder="1" left="10" top="70" height="226" binddataset="Dataset1" right="10" autofittype="col">
           <Formats>
             <Format id="default">
@@ -654,8 +654,7 @@ this.btn_Exe5_4_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	for (var i=0; i<this.Dataset5.rowCount; i++) 
-	{
+	for (var i=0; i < this.Dataset5.rowCount; i++); {
 		trace(i + "===" + this.Dataset5.getRowType(i));
 	}
 };
@@ -665,6 +664,11 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.Dataset6_cancolumnchange = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
 {
 	trace("cancolumnchange");
+// 	var nCnt = obj.findRowExpr("FULL_NAME == '" + e.newvalue + "'&& currow != " + e.row);
+// 	if(nCnt >= 0) {
+// 		this.alert("Data Duplication");
+// 		return false;
+// 	}
 };
 
 this.Dataset6_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
@@ -681,7 +685,13 @@ this.btn_Exe6_3_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // Exe 6-5
 this.btn_Exe6_5_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.Dataset6.setColumn(1, "FULL_NAME", "Modify2");
+	this.Dataset6.set_enableevent(false);
+	
+	for (var i=0; i<this.Dataset6.rowCount; i++);
+	{
+		this.Dataset6.setColumn(i, "FULL_NAME", "Modify2");
+	}
+	this.Dataset6.set_enableevent(true);
 };
 
 this.txtRtn2_onchanged = function(obj:nexacro.TextArea,e:nexacro.ChangeEventInfo)
