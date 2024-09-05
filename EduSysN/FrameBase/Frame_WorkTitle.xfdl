@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Frame_WorkTitle" left="0" top="0" width="1000" height="40" scrolltype="none" titletext="Frame_WorkTitle" onload="Frame_WorkTitle_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_base" taborder="8" text="Button00" top="5" width="0" height="30" right="5" visible="false" onclick="fn_commBtnClick"/>
+        <Static id="st_title" taborder="0" left="18" top="5" width="382" height="30" text="메뉴타이틀" cssclass="sta_WF_LabelTxt"/>
+        <Button id="btn_myMenu" taborder="1" left="5" top="10" width="20" cssclass="btn_WF_boomark" onclick="btn_myMenu_onclick" height="20"/>
+        <Button id="btn_print" taborder="7" text="출력" top="5" width="54" height="30" right="btn_base:5" visible="false" onclick="fn_commBtnClick" cssclass="btn_WF_FrmMain"/>
+        <Button id="btn_excel" taborder="6" text="엑셀" top="5" width="54" height="30" right="btn_print:5" visible="false" onclick="fn_commBtnClick" cssclass="btn_WF_FrmMain"/>
+        <Button id="btn_save" taborder="4" text="저장" top="5" width="54" height="30" right="btn_excel:5" visible="false" onclick="fn_commBtnClick" cssclass="btn_WF_FrmMain"/>
+        <Button id="btn_delete" taborder="5" text="삭제" top="5" width="54" height="30" right="btn_save:5" visible="false" onclick="fn_commBtnClick" cssclass="btn_WF_FrmMain"/>
+        <Button id="btn_add" taborder="3" text="입력" top="5" width="54" height="30" right="btn_delete:5" visible="false" onclick="fn_commBtnClick" cssclass="btn_WF_FrmMain"/>
+        <Button id="btn_search" taborder="2" text="조회" top="5" width="54" height="30" right="btn_add:5" visible="false" onclick="fn_commBtnClick" cssclass="btn_WF_FrmMain"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[this.objApp = this.gfn_getApplication();
+this.fv_menuId = "";
+
+this.Frame_WorkTitle_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fv_menuId = this.getOwnerFrame().arguments["menuId"];
+    
+    this.fn_setBookmark();
+};
+
+this.fn_setBookmark = function()
+{
+    var nRow = this.objApp.gds_myMenu.findRow("MENU_ID", this.fv_menuId);
+    this.btn_myMenu.set_cssclass("btn_WF_boomark");
+    if(nRow > -1){
+        this.btn_myMenu.set_cssclass("btn_WF_boomark_S");
+    }    
+}
+
+this.btn_myMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.gds_myMenu.set_enableevent(false);
+	this.objApp.av_LeftFrame.form.div_left.form.grd_menu.set_enableredraw(false);
+
+	if(this.btn_myMenu.cssclass == "btn_WF_boomark_S"){
+		//즐겨찾기해제
+		var nRow = this.objApp.gds_myMenu.findRow("MENU_ID", this.fv_menuId);
+		this.objApp.gds_myMenu.deleteRow(nRow);
+        this.btn_myMenu.set_cssclass("btn_WF_boomark");
+	}
+	else{
+		//즐겨찾기추가
+		var nRow = this.objApp.gds_menu.findRow("MENU_ID", this.fv_menuId);
+        var nNewRow =  this.objApp.gds_myMenu.addRow();
+		this.objApp.gds_myMenu.copyRow(nNewRow, this.objApp.gds_menu, nRow);
+        this.btn_myMenu.set_cssclass("btn_WF_boomark_S");
+	}	
+	this.objApp.gds_myMenu.set_enableevent(true);
+	this.objApp.av_LeftFrame.form.div_left.form.grd_menu.set_enableredraw(true);
+	nexacro.setPrivateProfile("gds_myMenu", this.objApp.gds_myMenu.saveXML());
+
+};
+
+this.fn_setAuthBtn = function(strAuth)
+{
+	//공통버튼 설정 1:사용, 0:미사용
+	//각각버튼을 arrange로 설정 size 0으로 처리
+	var arrObj = ["btn_search","btn_add","btn_delete","btn_save","btn_excel","btn_print"];
+	for(var i=0; i<arrObj.length; i++){
+		var objBtn = this.components[arrObj[i]];
+		if(strAuth.substr(i, 1) == "0"){
+			objBtn.set_width("0");
+			objBtn.set_right(objBtn.right.replace(":3", ":0")); //사이 간격으로 인하여 한쪽은 0으로 변경
+		}
+		else{
+			objBtn.set_visible(true);
+		}
+	}
+    
+    this.resetScroll();
+}
+
+// 공통버튼 클릭이벤트
+this.fn_commBtnClick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sName = String(obj.name).substr(4);   //btn_save
+
+    switch(sName) {
+        case "search":
+            this.parent.parent.div_work.form.fn_search();
+            break;
+        case "add":
+             this.parent.parent.div_work.form.fn_add();
+            break;
+        case "delete":
+             this.parent.parent.div_work.form.fn_delete();
+            break;
+        case "save":
+             this.parent.parent.div_work.form.fn_save();
+            break;
+        case "excel":
+             this.parent.parent.div_work.form.fn_excel();
+            break;
+        case "print":
+             this.parent.parent.div_work.form.fn_print();
+            break;
+        default:
+    }	
+};
+]]></Script>
+  </Form>
+</FDL>
