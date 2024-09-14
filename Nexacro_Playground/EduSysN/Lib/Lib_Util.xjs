@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script version="1.0" type="xscript5.1"><![CDATA[
+// 이번달 1일
+this.gfn_getFirstDay = function(){
+// To. 오늘 날짜
+	var objDate = new Date();
+	var sDate = objDate.getFullYear().toString();
+	sDate += (objDate.getMonth()+1).toString().padLeft(2, "0");
+	sDate += "01";
+	
+	return sDate;
+}
+
+// To. 오늘 날짜
+this.lfn_getToday = function(){
+	var objDate = new Date();
+	var sDate = objDate.getFullYear().toString();
+	sDate += (objDate.getMonth()+1).toString().padLeft(2, "0");
+	sDate += objDate.getDate().toString().padLeft(2, "0");
+	
+	return sDate;
+}
+]]></Script>
